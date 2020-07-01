@@ -1,4 +1,5 @@
 import React from 'react'
+import data from "../mockdata.json"
 
 
 class Main extends React.Component {
@@ -6,50 +7,53 @@ class Main extends React.Component {
         return (
             <div className="" >
                 <div className="container">
-                    <seccion className="row">
-                        <div className="col-xs-6 col-sm-4 col-md-3">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                        <div className="col-xs-6 col-sm-4 col-md-3" >
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                        <div className="col-xs-6 col-sm-4 col-md-3">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                        <div className="col-xs-6 col-sm-4 col-md-3">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                    </seccion>
-                    <seccion className="row">
-                        <div className="col-xs-6 col-sm-4 col-md-3">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                        <div className="col-xs-6 col-sm-4 col-md-3">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                        <div className="col-xs-6 col-sm-4 col-md-3">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                        <div className="col-xs-6 col-sm-4 col-md-3">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                    </seccion>
+                    <div className="row">
+                        {
+                            data.map((pokemon, index) => {
+                                return (
+                                    <div key={index} className="col-xs-6 col-sm-4 col-md-3">
+                                        <h5 className="text-capitalize">{pokemon.name}</h5>
+                                        <p># {pokemon.id}</p>
+                                        <img src={pokemon.image} alt={pokemon.name} width="150" height="150" className="img-responsive mx-auto d-block" />
+                                        <p className="text-capitalize">weight : {pokemon.weight}</p>
+                                        <p>Evolution :</p>
+                                        <div>
+                                            {
+                                                pokemon.evolution_chain.map((evolution) => {
+                                                    return (
+                                                        <p className="text-capitalize">- {evolution}</p>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                        <p>Abilities :</p>
+                                        <div>
+                                            {
+                                                pokemon.abilities.map((abilities) => {
+                                                    return (
+                                                        <p className="text-capitalize">- {abilities}</p>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                        <p>Types :</p>
+                                        <div>
+                                            {
+                                                pokemon.types.map((types) => {
+                                                    return (
+                                                        <p className="text-capitalize">- {types}</p>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                        <p>
+                                            {pokemon.descriptions[Math.floor(Math.random() * pokemon.descriptions.length)]}
+                                        </p>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
 
                 </div>
             </div >
