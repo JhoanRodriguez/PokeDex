@@ -1,7 +1,9 @@
 import React from 'react'
 
 var page = 0
-var info = "https://6mja956dac.execute-api.us-east-1.amazonaws.com/dev/pokemon/details/list/30/0"
+var init = 39
+var source = "https://6mja956dac.execute-api.us-east-1.amazonaws.com/dev/pokemon/details/list/"
+var info = source + init + "/" + page
 
 
 
@@ -31,12 +33,12 @@ class Main extends React.Component {
                                             <img src={pokemon.image} alt={pokemon.name} width="150" height="150" className="img-responsive mx-auto d-block" />
                                             <p className="text-capitalize">weight : {pokemon.weight}</p>
                                             <p>
-                                                <a class="btn btn-info" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Evolution :</a>
+                                                <a className="btn btn-info" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Evolution :</a>
                                             </p>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="collapse multi-collapse" id="multiCollapseExample1">
-                                                        <div class="card card-body">
+                                            <div className="row">
+                                                <div className="col">
+                                                    <div className="collapse multi-collapse" id="multiCollapseExample1">
+                                                        <div className="card card-body">
                                                             {
                                                                 pokemon.evolution_chain.map((evolution) => {
                                                                     if (evolution !== pokemon.name) {
@@ -52,12 +54,12 @@ class Main extends React.Component {
                                                 </div>
                                             </div>
                                             <p>
-                                                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Abilities : </button>
+                                                <button className="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Abilities : </button>
                                             </p>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="collapse multi-collapse" id="multiCollapseExample2">
-                                                        <div class="card card-body">
+                                            <div className="row">
+                                                <div className="col">
+                                                    <div className="collapse multi-collapse" id="multiCollapseExample2">
+                                                        <div className="card card-body">
                                                             {
                                                                 pokemon.abilities.map((abilities) => {
                                                                     return (
@@ -70,12 +72,12 @@ class Main extends React.Component {
                                                 </div>
                                             </div>
                                             <p>
-                                                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Types : </button>
+                                                <button className="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Types : </button>
                                             </p>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="collapse multi-collapse" id="multiCollapseExample3">
-                                                        <div class="card card-body">
+                                            <div className="row">
+                                                <div className="col">
+                                                    <div className="collapse multi-collapse" id="multiCollapseExample3">
+                                                        <div className="card card-body">
                                                             {
                                                                 pokemon.types.map((types) => {
                                                                     return (
