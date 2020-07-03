@@ -39,9 +39,12 @@ class Main extends React.Component {
                                                         <div class="card card-body">
                                                             {
                                                                 pokemon.evolution_chain.map((evolution) => {
-                                                                    return (
-                                                                        <p className="text-capitalize">- {evolution}</p>
-                                                                    )
+                                                                    if (evolution !== pokemon.name) {
+                                                                        return (
+                                                                            <p className="text-capitalize">- {evolution}</p>
+                                                                        )
+                                                                    }
+                                                                    return (null)
                                                                 })
                                                             }
                                                         </div>
